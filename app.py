@@ -1,4 +1,6 @@
 from flask import Flask, render_template
+import requests
+from movies import movies_with_people
 
 app = Flask(__name__)
 
@@ -12,10 +14,13 @@ def root():
 
 @app.route("/movies")
 def movies():
-    movies = [
-        {
-            "title": "My Neighbor Totoro",
-            "people": ["Mei Kusakabe", "Satsuki Kusakabe", "Tatsuo Kusakabe"],
-        }
-    ]
-    return render_template("movies.html", movies=movies)
+
+    movies_url = GLIBLI_URL + "/films"
+    people_url = GLIBLI_URL + "/people"
+
+    movies = requests.get(movies_url).json()
+    people = requests.get(people_url).json()
+
+    with_people = movies_with_people(movies, people)
+
+    return render_template("movies.html", movies=with_people)
