@@ -7,6 +7,7 @@ Usage
 
 Run tests
 
+    pip install -r requirements-dev.txt
     pytest
 
 Or
