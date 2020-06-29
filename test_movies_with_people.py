@@ -1,6 +1,6 @@
 import unittest
-import pytest
-from movies import movies_with_people, id_from_url
+from movies import movies_with_people
+from movies import id_from_url, films_ids_from_person
 
 
 class TestIdFromUrl(unittest.TestCase):
@@ -13,6 +13,20 @@ class TestIdFromUrl(unittest.TestCase):
         expected = "758bf02e-3122-46e0-884e-67cf83df1786"
 
         assert id_from_url(url) == expected
+
+
+class TestFilmsIdsFromPerson(unittest.TestCase):
+    def test_get_films_ids(self):
+        person = {
+            "name": "Sosuke",
+            "films": [
+                "http://ghi.com/films/758bf02e-3122-46e0-884e-67cf83df1786"
+            ],
+        }
+
+        expected = ["758bf02e-3122-46e0-884e-67cf83df1786"]
+
+        assert films_ids_from_person(person) == expected
 
 
 class TestMoviesWithPeople(unittest.TestCase):
@@ -38,7 +52,6 @@ class TestMoviesWithPeople(unittest.TestCase):
 
         assert with_people == expected
 
-    @pytest.mark.skip("to develop")
     def test_with_movies_and_people(self):
         people = [
             {
