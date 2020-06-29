@@ -1,0 +1,16 @@
+<h1>Glibli's movies</h1>
+
+<ul>
+  {% for movie in movies %}
+  <li>
+    {{ movie.title }}
+    <ul>
+      {% for person in movie.people %}
+        <li>
+          {{ person }}
+        </li>
+      {% endfor %}
+    </ul>
+  </li>
+  {% endfor %}
+</ul>
