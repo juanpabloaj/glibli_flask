@@ -13,6 +13,6 @@ Or
 
     ptw
 
-Run code formatter
+Run code formatter and flake8
 
-    black .
+    black -l 79 . && flake8
