@@ -7,6 +7,11 @@ GLIBLI_URL = "https://ghibliapi.herokuapp.com"
 
 @app.route("/")
 def root():
+    return "Hello Glibli's fans"
+
+
+@app.route("/movies")
+def movies():
     movies = [
         {
             "title": "My Neighbor Totoro",
