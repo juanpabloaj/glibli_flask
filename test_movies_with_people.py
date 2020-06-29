@@ -1,6 +1,18 @@
 import unittest
 import pytest
-from movies import movies_with_people
+from movies import movies_with_people, id_from_url
+
+
+class TestIdFromUrl(unittest.TestCase):
+    def test_get_id(self):
+        url = (
+            "https://ghibliapi.herokuapp.com/films/"
+            "758bf02e-3122-46e0-884e-67cf83df1786"
+        )
+
+        expected = "758bf02e-3122-46e0-884e-67cf83df1786"
+
+        assert id_from_url(url) == expected
 
 
 class TestMoviesWithPeople(unittest.TestCase):

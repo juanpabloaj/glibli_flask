@@ -1,3 +1,7 @@
+def id_from_url(url):
+    return url.split("/")[-1]
+
+
 def movies_with_people(movies, people):
     with_people = []
 
